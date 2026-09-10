@@ -1,0 +1,27 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
+
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+            },
+        },
+    },
+
+    plugins: [forms],
+};
+safelist: [
+    'bg-lime-500/10', 'bg-lime-500/20', 'text-lime-400',
+    'bg-sky-500/10', 'bg-sky-500/20', 'text-sky-400',
+    'bg-fuchsia-500/10', 'bg-fuchsia-500/20', 'text-fuchsia-400',
+    'bg-amber-500/10', 'bg-amber-500/20', 'text-amber-400',
+]
