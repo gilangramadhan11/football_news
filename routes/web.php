@@ -9,8 +9,9 @@ use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 
-Route::get('/', [HomeController::class, 'index'])
-    ->name('home');
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 Route::get('/article/{slug}', [HomeController::class, 'show'])
     ->name('article.show');
 Route::get('/category/{slug}', [HomeController::class, 'show'])
