@@ -89,4 +89,50 @@ class CategoryController extends Controller
             ->route('categories.index')
             ->with('success', 'Kategori berhasil dihapus.');
     }
+
+    public function api()
+    {
+        $categories = Category::orderBy('id')->get();
+
+        return response()->json([
+            'category' => $categories,
+        ]);
+    }
+
+    public function apiShow($slug)
+    {
+        $article = Article::with('category', 'user')
+            ->where('slug', $slug)
+            ->where('status', 'published')
+            ->firstOrFail();
+
+        $relatedArticles = Article::with('category', 'user')
+            ->where('category_id', $article->category_id)
+            ->where('id', '!=', $article->id)
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->take(3)
+            ->get();
+
+        return response()->json([
+            'data' => [
+                'id' => $article->id,
+                'title' => $article->title,
+                'slug' => $article->slug,
+                'content' => $article->content,
+                'thumbnail' => $article->thumbnail,
+                'published_at' => $article->published_at,
+                'views' => $article->views,
+                'user' => [
+                    'id' => $article->user->id,
+                    'name' => $article->user->name,
+                    'email' => $article->user->email,
+                ],
+                'category' => [
+                    'name' => $article->category->name,
+                ],
+                'related_articles' => $relatedArticles,
+            ],
+        ]);
+    }
 }
