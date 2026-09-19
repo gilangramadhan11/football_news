@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return redirect()->route('login');
-});
+})->name('home');
 Route::get('/article/{slug}', [HomeController::class, 'show'])
     ->name('article.show');
 Route::get('/category/{slug}', [HomeController::class, 'show'])
