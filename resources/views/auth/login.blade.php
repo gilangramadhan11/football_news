@@ -33,7 +33,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
             <button 
                 type="button" 
-                class="absolute inset-y-0 right-0 flex items-center px-2 pt-6 text-gray-500 hover:text-slate-700">
+                class="absolute inset-y-0 right-0 flex items-center px-2 pt-6 text-gray-500 hover:text-neutral-700">
                 <i id="passwordIcon" class="bx bx-show text-xl"></i>
             </button>
         </div>
@@ -59,6 +59,36 @@
             <button class="w-full rounded-lg text-neutral-100 py-2 justify-center bg-neutral-700 hover:bg-neutral-900 focus:bg-neutral-900 active:bg-neutral-900">
                 {{ __('Login') }}
             </button>
+        </div>
+        <div class="my-3 rounded-xl border border-neutral-500/30 bg-neutral-800/80 p-4 text-left shadow-lg backdrop-blur-sm">
+            <div class="mb-2 flex items-center gap-2 text-neutral-100 font-semibold text-xs uppercase tracking-wider">
+                <i class="bx bx-info-circle text-base"></i>
+                <span>Akun Demo Login</span>
+            </div>
+            <div class="space-y-2 text-xs text-neutral-300 font-mono">
+                <div class="flex justify-between items-center bg-neutral-900/60 px-3 py-2 rounded border border-neutral-700/50">
+                    <span>Email: <strong class="text-white">admin@footballnews.test</strong></span>
+                    <button 
+                        type="button" 
+                        onclick="navigator.clipboard.writeText('admin@footballnews.test')"
+                        class="text-neutral-400 hover:text-lime-400 transition"
+                        title="Salin Email"
+                    >
+                        <i class="bx bx-copy text-sm"></i>
+                    </button>
+                </div>
+                <div class="flex justify-between items-center bg-neutral-900/60 px-3 py-2 rounded border border-neutral-700/50">
+                    <span>Pass : <strong class="text-white">password</strong></span>
+                    <button 
+                        type="button" 
+                        onclick="navigator.clipboard.writeText('password')"
+                        class="text-neutral-400 hover:text-lime-400 transition"
+                        title="Salin Password"
+                    >
+                        <i class="bx bx-copy text-sm"></i>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="flex items-center gap-4 my-4">
             <div class="h-px flex-1 bg-neutral-200"></div>
