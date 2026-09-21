@@ -265,7 +265,13 @@ class HomeController extends Controller
             ->get();
 
         return response()->json([
-            'featured' => $featured,
+            'featured' => $featured->map(function ($article) {
+                $article->thumbnail = $article->thumbnail
+                    ? 'https://footballnews-production.up.railway.app/storage/' . $article->thumbnail
+                    : 'https://footballnews-production.up.railway.app/images/default-news.jpg';
+
+                return $article;
+            }),
             'breakingNews' => $breakingNews,
             'recentArticles' => $recentArticles,
             'weekFixtures' => $weekFixtures,
