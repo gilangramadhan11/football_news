@@ -23,6 +23,11 @@ class FootballApiService
             ]);
 
             if ($response->failed()) {
+                \Log::error('API Football Error', [
+                    'status' => $response->status(),
+                    'body' => $response->body(),
+                ]);
+
                 return [];
             }
 
